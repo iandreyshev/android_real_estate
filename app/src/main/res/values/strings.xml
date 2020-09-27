@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">RealEstate</string>
+
+    <string name="bullet_separator">\u2022</string>
+</resources>

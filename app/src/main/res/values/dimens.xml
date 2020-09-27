@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="grid_step_1">4dp</dimen>
+    <dimen name="grid_step_2">8dp</dimen>
+    <dimen name="grid_step_3">12dp</dimen>
+    <dimen name="grid_step_4">16dp</dimen>
+    <dimen name="grid_step_5">20dp</dimen>
+    <dimen name="grid_step_6">24dp</dimen>
+    <dimen name="grid_step_7">28dp</dimen>
+    <dimen name="grid_step_8">32dp</dimen>
+
+</resources>
