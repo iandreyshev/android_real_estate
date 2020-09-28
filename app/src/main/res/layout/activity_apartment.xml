@@ -6,6 +6,7 @@
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/contentView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -37,9 +38,29 @@
             android:layout_margin="@dimen/grid_step_2"
             android:backgroundTint="@android:color/white"
             app:borderWidth="0dp"
+            app:fabCustomSize="50dp"
             app:layout_constraintEnd_toEndOf="@id/photoCard"
             app:layout_constraintTop_toTopOf="@id/photoCard"
             app:srcCompat="@drawable/ic_like_passive" />
+
+        <FrameLayout
+            android:id="@+id/backButtonWrapper"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="@dimen/grid_step_2"
+            android:background="@drawable/background_apartment_back_button"
+            app:layout_constraintStart_toStartOf="@id/photoCard"
+            app:layout_constraintTop_toTopOf="@id/photoCard">
+
+            <ImageButton
+                android:id="@+id/backButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:srcCompat="@drawable/ic_back_arrow" />
+
+        </FrameLayout>
 
         <ImageView
             android:id="@+id/ratingIcon"
@@ -179,7 +200,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/grid_step_2"
-            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            android:text="@string/lorem_ipsum_2"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/detailsTitle"

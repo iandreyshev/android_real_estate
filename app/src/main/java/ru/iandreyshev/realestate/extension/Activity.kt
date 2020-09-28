@@ -8,7 +8,7 @@ import androidx.core.content.ContextCompat
 import ru.iandreyshev.realestate.R
 
 
-fun AppCompatActivity.setTranslucentBars() {
+fun AppCompatActivity.initTranslucentBars() {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
         window.setDecorFitsSystemWindows(true)
     } else {

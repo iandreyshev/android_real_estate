@@ -9,6 +9,8 @@
     tools:layout_width="300dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/contentView"
+        android:background="?attr/selectableItemBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="@dimen/grid_step_2"

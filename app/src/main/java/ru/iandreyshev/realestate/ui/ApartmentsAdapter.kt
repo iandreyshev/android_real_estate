@@ -11,16 +11,16 @@ import kotlinx.android.synthetic.main.item_apartment.view.*
 import ru.iandreyshev.realestate.R
 import ru.iandreyshev.realestate.domain.Apartment
 
-class ApartmentsAdapter : ListAdapter<Apartment, ViewHolder>(DiffCallback) {
+class ApartmentsAdapter(
+    private val onClickListener: (position: Int) -> Unit
+) : ListAdapter<Apartment, ViewHolder>(DiffCallback) {
 
     var itemWidth = 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         LayoutInflater.from(parent.context)
             .inflate(R.layout.item_apartment, parent, false)
-            .let { view ->
-                ViewHolder(view)
-            }
+            .let { view -> ViewHolder(view, onClickListener) }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val apartment = getItem(position)
@@ -36,8 +36,14 @@ class ApartmentsAdapter : ListAdapter<Apartment, ViewHolder>(DiffCallback) {
 
 }
 
-class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+class ViewHolder(
+    view: View,
+    onClickListener: (position: Int) -> Unit
+) : RecyclerView.ViewHolder(view) {
 
+    init {
+        view.contentView.setOnClickListener { onClickListener(adapterPosition) }
+    }
 
 }
 

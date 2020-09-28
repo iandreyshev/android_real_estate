@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MainActivity">
+    tools:context=".ui.MapActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/zoomButtonsCard"
@@ -74,7 +74,7 @@
         android:id="@+id/apartments"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/grid_step_8"
+        android:layout_marginBottom="@dimen/grid_step_6"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
