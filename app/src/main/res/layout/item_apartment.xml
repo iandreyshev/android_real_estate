@@ -4,17 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    app:cardCornerRadius="8dp"
     tools:layout_margin="4dp"
-    tools:layout_width="250dp">
+    tools:layout_width="300dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/grid_step_2"
+        android:paddingVertical="@dimen/grid_step_2">
 
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_margin="@dimen/grid_step_2"
+            android:layout_marginEnd="@dimen/grid_step_4"
             android:elevation="0dp"
             app:cardBackgroundColor="@color/gray"
             app:cardCornerRadius="8dp"
@@ -22,7 +25,8 @@
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/previewGuideline"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0">
 
             <ImageView
                 android:id="@+id/photo"
@@ -35,7 +39,6 @@
             android:id="@+id/agentStatus"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/grid_step_2"
             android:background="@drawable/background_agent_status"
             android:maxLines="1"
             android:padding="2dp"
@@ -63,9 +66,10 @@
             android:id="@+id/likeButton"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:layout_marginTop="@dimen/grid_step_2"
-            android:background="@null"
+            android:layout_marginStart="@dimen/grid_step_1"
+            android:background="?attr/selectableItemBackgroundBorderless"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/agentStatusDescription"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_like_passive" />
 
@@ -77,19 +81,52 @@
 
         <TextView
             android:id="@+id/name"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/grid_step_1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/previewGuideline"
             app:layout_constraintTop_toBottomOf="@id/agentStatus"
             tools:text="Mini Apartment, Take a siesta on the garden" />
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/grid_step_1"
+            app:layout_constraintEnd_toEndOf="@id/name"
+            app:layout_constraintStart_toStartOf="@id/name"
+            app:layout_constraintTop_toBottomOf="@id/name"
+            tools:text="$74 per night" />
+
+        <ImageView
+            android:id="@+id/ratingIcon"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:scaleType="fitXY"
+            app:layout_constraintStart_toStartOf="@id/price"
+            app:layout_constraintTop_toBottomOf="@id/price"
+            app:srcCompat="@drawable/ic_star" />
+
+        <TextView
+            android:id="@+id/rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/grid_step_2"
+            android:layout_marginTop="@dimen/grid_step_1"
+            android:text="4,82 (134)"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ratingIcon"
+            app:layout_constraintTop_toBottomOf="@id/price" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/previewGuideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.3" />
+            app:layout_constraintGuide_percent="0.35" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -6,5 +6,5 @@ data class Apartment(
     val description: String,
     val rating: Rating,
     val isChecked: Boolean,
-    val address: String
+    val address: Address
 )

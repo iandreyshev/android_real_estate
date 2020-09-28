@@ -1,10 +1,12 @@
 package ru.iandreyshev.realestate.extension
 
 import android.os.Build
+import android.util.DisplayMetrics
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import ru.iandreyshev.realestate.R
+
 
 fun AppCompatActivity.setTranslucentBars() {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
@@ -23,3 +25,12 @@ fun AppCompatActivity.setTranslucentBars() {
     window.statusBarColor = ContextCompat.getColor(this, R.color.status_bar)
     window.navigationBarColor = ContextCompat.getColor(this, R.color.navigation_bar)
 }
+
+fun AppCompatActivity.getWidth(): Int =
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+        windowManager.currentWindowMetrics.bounds.width()
+    } else {
+        val metrics = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(metrics)
+        metrics.widthPixels
+    }
