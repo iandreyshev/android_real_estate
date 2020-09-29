@@ -67,7 +67,7 @@
             android:layout_width="12dp"
             android:layout_height="12dp"
             android:layout_marginStart="@dimen/grid_step_4"
-            android:layout_marginTop="@dimen/grid_step_6"
+            android:layout_marginTop="@dimen/grid_step_7"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/photoCard"
             app:srcCompat="@drawable/ic_star" />
