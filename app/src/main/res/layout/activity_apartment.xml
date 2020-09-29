@@ -64,8 +64,8 @@
 
         <ImageView
             android:id="@+id/ratingIcon"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
             android:layout_marginStart="@dimen/grid_step_4"
             android:layout_marginTop="@dimen/grid_step_6"
             app:layout_constraintStart_toStartOf="parent"
@@ -73,33 +73,90 @@
             app:srcCompat="@drawable/ic_star" />
 
         <TextView
-            android:id="@+id/averageRating"
+            android:id="@+id/rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/grid_step_1"
+            android:fontFamily="@font/dmsans_medium"
+            android:textColor="@color/gray_2"
+            android:textSize="13sp"
             app:layout_constraintBottom_toBottomOf="@id/ratingIcon"
             app:layout_constraintStart_toEndOf="@id/ratingIcon"
             app:layout_constraintTop_toTopOf="@id/ratingIcon"
             tools:text="4,82 (134)" />
 
         <TextView
-            android:id="@+id/bulletSeparator"
+            android:id="@+id/ratingBulletSeparator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/grid_step_2"
+            android:fontFamily="@font/dmsans_medium"
             android:text="@string/bullet_separator"
-            app:layout_constraintBottom_toBottomOf="@id/averageRating"
-            app:layout_constraintStart_toEndOf="@id/averageRating"
-            app:layout_constraintTop_toTopOf="@id/averageRating" />
+            android:textColor="@color/gray_2"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@id/rating"
+            app:layout_constraintStart_toEndOf="@id/rating"
+            app:layout_constraintTop_toTopOf="@id/rating" />
+
+        <ImageView
+            android:id="@+id/checkedStatusIcon"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginStart="@dimen/grid_step_2"
+            app:layout_constraintBottom_toBottomOf="@id/ratingIcon"
+            app:layout_constraintStart_toEndOf="@id/ratingBulletSeparator"
+            app:layout_constraintTop_toTopOf="@id/ratingIcon"
+            app:srcCompat="@drawable/ic_apartment_is_checked" />
+
+        <TextView
+            android:id="@+id/checkedStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/grid_step_1"
+            android:text="Checked"
+            android:textColor="@color/gray_2"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@id/ratingIcon"
+            app:layout_constraintStart_toEndOf="@id/checkedStatusIcon"
+            app:layout_constraintTop_toTopOf="@id/ratingIcon" />
+
+        <TextView
+            android:id="@+id/checkedStatusBulletSeparator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/grid_step_2"
+            android:fontFamily="@font/dmsans_medium"
+            android:text="@string/bullet_separator"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@id/rating"
+            app:layout_constraintStart_toEndOf="@+id/checkedStatus"
+            app:layout_constraintTop_toTopOf="@id/rating" />
+
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/grid_step_2"
+            android:layout_marginEnd="@dimen/grid_step_4"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/gray_2"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@id/ratingIcon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/checkedStatusBulletSeparator"
+            app:layout_constraintTop_toTopOf="@id/ratingIcon"
+            tools:text="4,82 (134)" />
 
         <TextView
             android:id="@+id/name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/grid_step_4"
-            android:layout_marginTop="@dimen/grid_step_6"
+            android:layout_marginTop="@dimen/grid_step_4"
+            android:fontFamily="@font/arimo"
             android:textColor="@android:color/black"
-            android:textSize="24sp"
+            android:textSize="26sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -110,19 +167,19 @@
             android:id="@+id/ownerAvatar"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:layout_marginTop="@dimen/grid_step_6"
+            android:layout_marginTop="@dimen/grid_step_5"
             app:layout_constraintStart_toStartOf="@id/name"
             app:layout_constraintTop_toBottomOf="@id/name" />
 
         <ImageView
             android:id="@+id/ownerIcon"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:background="@color/gray_1"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:translationX="4dp"
             android:translationY="4dp"
             app:layout_constraintBottom_toBottomOf="@id/ownerAvatar"
-            app:layout_constraintEnd_toEndOf="@id/ownerAvatar" />
+            app:layout_constraintEnd_toEndOf="@id/ownerAvatar"
+            app:srcCompat="@drawable/ic_apartment_owner_icon" />
 
         <TextView
             android:id="@+id/owner"
@@ -130,7 +187,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/grid_step_2"
             android:layout_marginEnd="@dimen/grid_step_2"
+            android:fontFamily="@font/arimo"
             android:text="Federica Pinelli"
+            android:textColor="@color/blue_dark"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/contactMeIcon"
@@ -142,7 +201,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/grid_step_2"
+            android:fontFamily="@font/dmsans_medium"
             android:text="Super owner"
+            android:textColor="@color/blue_dark_50"
+            android:textSize="13sp"
             app:layout_constraintEnd_toStartOf="@+id/contactMeIcon"
             app:layout_constraintStart_toStartOf="@id/owner"
             app:layout_constraintTop_toBottomOf="@id/owner" />
@@ -152,7 +214,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/grid_step_4"
+            android:fontFamily="@font/dmsans_medium"
             android:text="Contact me"
+            android:textColor="@color/blue_dark_50"
+            android:textSize="13sp"
             app:layout_constraintBottom_toBottomOf="@id/ownerAvatar"
             app:layout_constraintEnd_toEndOf="parent" />
 
@@ -160,10 +225,11 @@
             android:id="@+id/contactMeIcon"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:background="@color/gray_1"
+            android:layout_marginEnd="@dimen/grid_step_2"
             app:layout_constraintBottom_toBottomOf="@id/contactMeText"
             app:layout_constraintEnd_toStartOf="@id/contactMeText"
-            app:layout_constraintTop_toTopOf="@id/contactMeText" />
+            app:layout_constraintTop_toTopOf="@id/contactMeText"
+            app:srcCompat="@drawable/ic_apartment_contact_with_owner" />
 
         <androidx.constraintlayout.widget.Barrier
             android:id="@+id/agentBarrier"
@@ -173,34 +239,39 @@
             app:constraint_referenced_ids="ownerIcon, @+id/ownerAvatar, @+id/superOwnerStatus, contactMeIcon, contactMeText" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/facilities"
+            android:id="@+id/amenityList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintTop_toBottomOf="@id/agentBarrier"
             tools:itemCount="7"
-            tools:listitem="@layout/item_facility" />
+            tools:listitem="@layout/item_amenity" />
 
         <TextView
             android:id="@+id/detailsTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/grid_step_4"
+            android:fontFamily="@font/arimo"
             android:text="Details"
-            android:textSize="18sp"
+            android:textColor="@color/blue_dark"
+            android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/facilities" />
+            app:layout_constraintTop_toBottomOf="@id/amenityList" />
 
         <TextView
             android:id="@+id/details"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/grid_step_4"
             android:layout_marginBottom="@dimen/grid_step_2"
+            android:fontFamily="@font/dmsans_regular"
             android:text="@string/lorem_ipsum_2"
-            android:textSize="16sp"
+            android:textColor="@color/blue_dark_70"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/detailsTitle"
             app:layout_constraintStart_toStartOf="@id/detailsTitle"

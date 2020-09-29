@@ -3,7 +3,7 @@ package ru.iandreyshev.realestate.ui
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.observe
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.bumptech.glide.Glide
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -18,7 +18,7 @@ import ru.iandreyshev.realestate.extension.getWidth
 import ru.iandreyshev.realestate.extension.initTranslucentBars
 import ru.iandreyshev.realestate.presentation.MapViewModel
 
-class MapActivity : AppCompatActivity() {
+class MapActivity : AppCompatActivity(R.layout.activity_main) {
 
     private val mViewModel: MapViewModel by viewModels()
     private lateinit var mMap: GoogleMap
@@ -26,7 +26,6 @@ class MapActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         initTranslucentBars()
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
         initMap()
         initZoomButtons()

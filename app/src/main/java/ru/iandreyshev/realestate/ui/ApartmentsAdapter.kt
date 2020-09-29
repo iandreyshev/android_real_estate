@@ -21,16 +21,16 @@ import ru.iandreyshev.realestate.extension.rubSymbol
 class ApartmentsAdapter(
     private val glide: RequestManager,
     private val onClickListener: (position: Int) -> Unit
-) : ListAdapter<Apartment, ViewHolder>(DiffCallback) {
+) : ListAdapter<Apartment, ApartmentViewHolder>(DiffCallback) {
 
     var itemWidth = 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         LayoutInflater.from(parent.context)
             .inflate(R.layout.item_apartment, parent, false)
-            .let { view -> ViewHolder(view, onClickListener) }
+            .let { view -> ApartmentViewHolder(view, onClickListener) }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ApartmentViewHolder, position: Int) {
         val apartment = getItem(position)
 
         holder.itemView.apply {
@@ -59,7 +59,7 @@ class ApartmentsAdapter(
 
 }
 
-class ViewHolder(
+class ApartmentViewHolder(
     view: View,
     onClickListener: (position: Int) -> Unit
 ) : RecyclerView.ViewHolder(view) {

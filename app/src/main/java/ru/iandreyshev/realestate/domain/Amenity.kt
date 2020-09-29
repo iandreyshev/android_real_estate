@@ -1,6 +1,6 @@
 package ru.iandreyshev.realestate.domain
 
-enum class Amenities {
+enum class Amenity {
     ELEVATOR,
     WIFI,
     ESSENTIALS,
