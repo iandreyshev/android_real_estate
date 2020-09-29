@@ -22,8 +22,8 @@ object ApartmentStorage {
                 ratesCount = 33
             ),
             address = Address(
-                lat = 56.636572,
-                lng = 47.902638,
+                lat = 56.642666,
+                lng = 47.898776,
                 description = "Yoshkar-Ola, Mari El Republic, Russia",
             ),
             cost = 2_369,
@@ -35,17 +35,17 @@ object ApartmentStorage {
             id = ApartmentId("1"),
             name = "Квартира Лофт",
             owner = Owner(
-                name = "Rich Bitch",
+                name = "Алина Орел",
                 isSuper = true,
-                photo = ""
+                photo = "https://sun9-23.userapi.com/c858332/v858332391/14bd5f/dKaLNSahToI.jpg"
             ),
             rating = Rating(
                 average = 4.75,
                 ratesCount = 214
             ),
             address = Address(
-                lat = 56.641575,
-                lng = 47.870500,
+                lat = 56.638124,
+                lng = 47.898347,
                 description = "Yoshkar-Ola, Respublika Mariy El, Russia"
             ),
             cost = 2_200,
@@ -61,15 +61,15 @@ object ApartmentStorage {
             owner = Owner(
                 name = "Kathy Bates",
                 isSuper = false,
-                photo = ""
+                photo = "https://www.goldenglobes.com/sites/default/files/articles/cover_images/15-kathy_bates20191120_35.jpg"
             ),
             rating = Rating(
                 average = 3.4,
                 ratesCount = 624
             ),
             address = Address(
-                lat = 56.6327589,
-                lng = 47.9085313,
+                lat = 56.632890,
+                lng = 47.904446,
                 description = "Yoshkar-Ola, Respublika Mariy El, Russia"
             ),
             cost = 800,
@@ -84,15 +84,15 @@ object ApartmentStorage {
             owner = Owner(
                 name = "Ivan Andreyshev",
                 isSuper = true,
-                photo = ""
+                photo = "https://sun9-22.userapi.com/c847217/v847217354/284a6/nuwroo9jPLA.jpg"
             ),
             rating = Rating(
                 average = 4.1,
                 ratesCount = 905
             ),
             address = Address(
-                lat = 56.642259,
-                lng = 47.883697,
+                lat = 56.633315,
+                lng = 47.899554,
                 description = "Yoshkar-Ola, Respublika Mariy El, Russia"
             ),
             cost = 2_499,
@@ -108,15 +108,15 @@ object ApartmentStorage {
             owner = Owner(
                 name = "Stanislav Sodov",
                 isSuper = true,
-                photo = ""
+                photo = "https://sun9-16.userapi.com/c852028/v852028016/17792/dyqkD2nsins.jpg"
             ),
             rating = Rating(
                 average = 4.8,
                 ratesCount = 1539
             ),
             address = Address(
-                lat = 56.636666,
-                lng = 47.896807,
+                lat = 56.633905,
+                lng = 47.911398,
                 description = "Yoshkar-Ola, Respublika Mariy El, Russia"
             ),
             cost = 1_999,

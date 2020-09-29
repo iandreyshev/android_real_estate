@@ -11,18 +11,22 @@
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".ui.MapActivity">
+        <activity
+            android:name=".ui.MapActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.ApartmentActivity" />
+        <activity
+            android:name=".ui.ApartmentActivity"
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyApJ-cDgyhRSwNEZh1t2z6ZrP9Q6a-P_pA" />
+            android:value="MAPS_API_KEY" />
 
     </application>
 
