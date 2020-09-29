@@ -3,8 +3,10 @@ package ru.iandreyshev.realestate.domain
 data class Apartment(
     val id: ApartmentId,
     val name: String,
-    val description: String,
+    val owner: Owner,
     val rating: Rating,
-    val isChecked: Boolean,
-    val address: Address
+    val address: Address,
+    val cost: Int,
+    val photo: String,
+    val isLiked: Boolean
 )

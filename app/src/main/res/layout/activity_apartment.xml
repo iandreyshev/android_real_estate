@@ -27,7 +27,7 @@
                 android:id="@+id/photo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/gray" />
+                android:background="@color/gray_1" />
 
         </androidx.cardview.widget.CardView>
 
@@ -38,17 +38,17 @@
             android:layout_margin="@dimen/grid_step_2"
             android:backgroundTint="@android:color/white"
             app:borderWidth="0dp"
-            app:fabCustomSize="50dp"
+            app:fabCustomSize="58dp"
             app:layout_constraintEnd_toEndOf="@id/photoCard"
             app:layout_constraintTop_toTopOf="@id/photoCard"
-            app:srcCompat="@drawable/ic_like_passive" />
+            app:srcCompat="@drawable/ic_apartment_like_passive" />
 
         <FrameLayout
             android:id="@+id/backButtonWrapper"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="@dimen/grid_step_2"
-            android:background="@drawable/background_apartment_back_button"
+            android:background="@drawable/background_apartment_back"
             app:layout_constraintStart_toStartOf="@id/photoCard"
             app:layout_constraintTop_toTopOf="@id/photoCard">
 
@@ -58,7 +58,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                app:srcCompat="@drawable/ic_back_arrow" />
+                app:srcCompat="@drawable/ic_apartment_back" />
 
         </FrameLayout>
 
@@ -107,26 +107,25 @@
             tools:text="Mini Apartment, Take a siesta on the garden" />
 
         <ImageView
-            android:id="@+id/agentAvatar"
+            android:id="@+id/ownerAvatar"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:layout_marginTop="@dimen/grid_step_6"
-            android:background="@color/gray"
             app:layout_constraintStart_toStartOf="@id/name"
             app:layout_constraintTop_toBottomOf="@id/name" />
 
         <ImageView
-            android:id="@+id/avatarIcon"
+            android:id="@+id/ownerIcon"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:background="@color/gray"
+            android:background="@color/gray_1"
             android:translationX="4dp"
             android:translationY="4dp"
-            app:layout_constraintBottom_toBottomOf="@id/agentAvatar"
-            app:layout_constraintEnd_toEndOf="@id/agentAvatar" />
+            app:layout_constraintBottom_toBottomOf="@id/ownerAvatar"
+            app:layout_constraintEnd_toEndOf="@id/ownerAvatar" />
 
         <TextView
-            android:id="@+id/agentName"
+            android:id="@+id/owner"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/grid_step_2"
@@ -135,18 +134,18 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/contactMeIcon"
-            app:layout_constraintStart_toEndOf="@id/agentAvatar"
-            app:layout_constraintTop_toTopOf="@id/agentAvatar" />
+            app:layout_constraintStart_toEndOf="@id/ownerAvatar"
+            app:layout_constraintTop_toTopOf="@id/ownerAvatar" />
 
         <TextView
-            android:id="@+id/agentStatus"
+            android:id="@+id/superOwnerStatus"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/grid_step_2"
             android:text="Super owner"
             app:layout_constraintEnd_toStartOf="@+id/contactMeIcon"
-            app:layout_constraintStart_toStartOf="@id/agentName"
-            app:layout_constraintTop_toBottomOf="@id/agentName" />
+            app:layout_constraintStart_toStartOf="@id/owner"
+            app:layout_constraintTop_toBottomOf="@id/owner" />
 
         <TextView
             android:id="@+id/contactMeText"
@@ -154,14 +153,14 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/grid_step_4"
             android:text="Contact me"
-            app:layout_constraintBottom_toBottomOf="@id/agentAvatar"
+            app:layout_constraintBottom_toBottomOf="@id/ownerAvatar"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <ImageView
             android:id="@+id/contactMeIcon"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:background="@color/gray"
+            android:background="@color/gray_1"
             app:layout_constraintBottom_toBottomOf="@id/contactMeText"
             app:layout_constraintEnd_toStartOf="@id/contactMeText"
             app:layout_constraintTop_toTopOf="@id/contactMeText" />
@@ -171,7 +170,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:barrierDirection="bottom"
-            app:constraint_referenced_ids="avatarIcon, agentAvatar, agentStatus, contactMeIcon, contactMeText" />
+            app:constraint_referenced_ids="ownerIcon, @+id/ownerAvatar, @+id/superOwnerStatus, contactMeIcon, contactMeText" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/facilities"

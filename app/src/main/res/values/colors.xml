@@ -7,6 +7,9 @@
     <color name="status_bar">#32000000</color>
     <color name="navigation_bar">#80ffffff</color>
 
-    <color name="gray">#C2C2C2</color>
+    <color name="black_0">#000</color>
+    <color name="black_1">#303030</color>
+    <color name="gray_1">#C2C2C2</color>
+    <color name="gray_2">#737A8A</color>
     <color name="blue">#126BF4</color>
 </resources>

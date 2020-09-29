@@ -3,7 +3,9 @@ package ru.iandreyshev.realestate.ui
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.PagerSnapHelper
+import com.bumptech.glide.Glide
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
@@ -63,6 +65,7 @@ class MapActivity : AppCompatActivity() {
 
         apartments.applySystemWindowInsetsToMargin(bottom = true)
         apartments.adapter = ApartmentsAdapter(
+            glide = Glide.with(this),
             onClickListener = { position ->
                 apartments.smoothScrollToPosition(position)
                 mViewModel.onOpenApartmentAt(position)

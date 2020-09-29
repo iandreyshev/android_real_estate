@@ -22,22 +22,24 @@
 
             <ImageButton
                 android:id="@+id/zoomInButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
                 android:background="?attr/selectableItemBackground"
-                app:srcCompat="@drawable/ic_plus" />
+                app:srcCompat="@drawable/ic_map_zoom_in" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
+                android:layout_marginHorizontal="@dimen/grid_step_1"
+                android:alpha="0.2"
                 android:background="@android:color/black" />
 
             <ImageButton
                 android:id="@+id/zoomOutButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
                 android:background="?attr/selectableItemBackground"
-                app:srcCompat="@drawable/ic_minus" />
+                app:srcCompat="@drawable/ic_map_zoom_out" />
 
         </LinearLayout>
 
@@ -54,8 +56,8 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="58dp"
+        android:layout_height="58dp"
         android:layout_margin="@dimen/grid_step_4"
         app:cardCornerRadius="4dp"
         app:layout_constraintBottom_toTopOf="@id/apartments"
@@ -63,10 +65,11 @@
 
         <ImageButton
             android:id="@+id/filtersButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:background="?attr/selectableItemBackground"
-            app:srcCompat="@drawable/ic_filters" />
+            app:srcCompat="@drawable/ic_map_filter" />
 
     </androidx.cardview.widget.CardView>
 

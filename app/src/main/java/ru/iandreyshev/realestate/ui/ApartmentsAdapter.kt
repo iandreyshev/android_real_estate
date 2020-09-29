@@ -3,15 +3,23 @@ package ru.iandreyshev.realestate.ui
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.core.text.bold
+import androidx.core.text.buildSpannedString
+import androidx.core.text.color
+import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.RequestManager
 import kotlinx.android.synthetic.main.item_apartment.view.*
 import ru.iandreyshev.realestate.R
 import ru.iandreyshev.realestate.domain.Apartment
+import ru.iandreyshev.realestate.extension.rubSymbol
 
 class ApartmentsAdapter(
+    private val glide: RequestManager,
     private val onClickListener: (position: Int) -> Unit
 ) : ListAdapter<Apartment, ViewHolder>(DiffCallback) {
 
@@ -29,8 +37,23 @@ class ApartmentsAdapter(
             updateLayoutParams {
                 width = itemWidth
             }
+            glide.load(apartment.photo)
+                .centerCrop()
+                .into(photo)
             name.text = apartment.name
-            rating.text = "${apartment.rating.average} (${apartment.rating.ratesCount})"
+            superOwnerStatus.isVisible = apartment.owner.isSuper
+            cost.text = buildSpannedString {
+                bold { append("${rubSymbol()} ") }
+                append("${apartment.cost} per night")
+            }
+            rating.text = buildSpannedString {
+                color(ContextCompat.getColor(context, R.color.black_0)) {
+                    append("${apartment.rating.average}")
+                }
+                color(ContextCompat.getColor(context, R.color.gray_2)) {
+                    append(" (${apartment.rating.ratesCount})")
+                }
+            }
         }
     }
 

@@ -5,9 +5,14 @@ import androidx.lifecycle.ViewModel
 import ru.iandreyshev.realestate.domain.Apartment
 
 class ApartmentViewModel(
-    private val apartment: Apartment
+    apartment: Apartment
 ) : ViewModel() {
 
-    val isLiked = MutableLiveData(false)
+    val apartment = MutableLiveData(apartment)
+
+    fun onToggleLike() {
+        val currentValue = apartment.value ?: return
+        apartment.value = currentValue.copy(isLiked = !currentValue.isLiked)
+    }
 
 }

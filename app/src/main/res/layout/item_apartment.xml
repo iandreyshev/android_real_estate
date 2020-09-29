@@ -10,9 +10,9 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/contentView"
-        android:background="?attr/selectableItemBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
         android:paddingHorizontal="@dimen/grid_step_2"
         android:paddingVertical="@dimen/grid_step_2">
 
@@ -21,8 +21,9 @@
             android:layout_height="0dp"
             android:layout_marginEnd="@dimen/grid_step_4"
             android:elevation="0dp"
-            app:cardBackgroundColor="@color/gray"
+            app:cardBackgroundColor="@color/gray_1"
             app:cardCornerRadius="8dp"
+            app:cardElevation="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/previewGuideline"
@@ -37,32 +38,50 @@
 
         </androidx.cardview.widget.CardView>
 
-        <TextView
-            android:id="@+id/agentStatus"
+        <LinearLayout
+            android:id="@+id/superOwnerStatusContainer"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/background_agent_status"
-            android:maxLines="1"
-            android:padding="2dp"
-            android:textAllCaps="true"
-            android:textSize="12sp"
-            app:layout_constrainedWidth="true"
-            app:layout_constraintStart_toStartOf="@id/previewGuideline"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Super owner" />
-
-        <TextView
-            android:id="@+id/agentStatusDescription"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/grid_step_1"
-            android:ellipsize="end"
-            android:maxLines="1"
-            app:layout_constraintBottom_toBottomOf="@id/agentStatus"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toStartOf="@id/likeButton"
-            app:layout_constraintStart_toEndOf="@id/agentStatus"
-            app:layout_constraintTop_toTopOf="@id/agentStatus"
-            tools:text="Whole apartment" />
+            app:layout_constraintStart_toStartOf="@id/previewGuideline"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/superOwnerStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/grid_step_1"
+                android:background="@drawable/background_super_owner_status"
+                android:fontFamily="@font/dmsans_bold"
+                android:maxLines="1"
+                android:paddingHorizontal="4dp"
+                android:paddingVertical="2dp"
+                android:text="Super owner"
+                android:textAllCaps="true"
+                android:textColor="@color/black_1"
+                android:textSize="10sp"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintEnd_toStartOf="@id/agentStatusDescription"
+                app:layout_constraintStart_toStartOf="@id/previewGuideline"
+                app:layout_goneMarginEnd="0dp" />
+
+            <TextView
+                android:id="@+id/agentStatusDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/dmsans_regular"
+                android:maxLines="1"
+                android:text="Whole apartment"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@id/superOwnerStatus"
+                app:layout_constraintEnd_toStartOf="@id/likeButton"
+                app:layout_constraintStart_toEndOf="@id/superOwnerStatus"
+                app:layout_constraintTop_toTopOf="@id/superOwnerStatus" />
+
+        </LinearLayout>
 
         <ImageButton
             android:id="@+id/likeButton"
@@ -70,16 +89,17 @@
             android:layout_height="24dp"
             android:layout_marginStart="@dimen/grid_step_1"
             android:background="?attr/selectableItemBackgroundBorderless"
+            app:layout_constraintBottom_toBottomOf="@+id/superOwnerStatusContainer"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/agentStatusDescription"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_like_passive" />
+            app:layout_constraintStart_toEndOf="@id/superOwnerStatusContainer"
+            app:layout_constraintTop_toTopOf="@+id/superOwnerStatusContainer"
+            app:srcCompat="@drawable/ic_map_like_active" />
 
         <androidx.constraintlayout.widget.Barrier
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:barrierDirection="bottom"
-            app:constraint_referenced_ids="agentStatus, agentStatusDescription, likeButton" />
+            app:constraint_referenced_ids="superOwnerStatusContainer, likeButton" />
 
         <TextView
             android:id="@+id/name"
@@ -87,17 +107,22 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/grid_step_1"
             android:ellipsize="end"
+            android:fontFamily="@font/arimo"
             android:maxLines="1"
+            android:textColor="@color/black_0"
+            android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/previewGuideline"
-            app:layout_constraintTop_toBottomOf="@id/agentStatus"
+            app:layout_constraintTop_toBottomOf="@id/superOwnerStatusContainer"
             tools:text="Mini Apartment, Take a siesta on the garden" />
 
         <TextView
-            android:id="@+id/price"
+            android:id="@+id/cost"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/grid_step_1"
+            android:layout_marginTop="@dimen/grid_step_2"
+            android:fontFamily="@font/dmsans_medium"
+            android:textColor="@color/black_0"
             app:layout_constraintEnd_toEndOf="@id/name"
             app:layout_constraintStart_toStartOf="@id/name"
             app:layout_constraintTop_toBottomOf="@id/name"
@@ -108,8 +133,9 @@
             android:layout_width="16dp"
             android:layout_height="16dp"
             android:scaleType="fitXY"
-            app:layout_constraintStart_toStartOf="@id/price"
-            app:layout_constraintTop_toBottomOf="@id/price"
+            app:layout_constraintBottom_toBottomOf="@+id/rating"
+            app:layout_constraintStart_toStartOf="@id/cost"
+            app:layout_constraintTop_toTopOf="@+id/rating"
             app:srcCompat="@drawable/ic_star" />
 
         <TextView
@@ -117,11 +143,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/grid_step_2"
-            android:layout_marginTop="@dimen/grid_step_1"
+            android:layout_marginTop="@dimen/grid_step_2"
+            android:fontFamily="@font/dmsans_regular"
             android:text="4,82 (134)"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/ratingIcon"
-            app:layout_constraintTop_toBottomOf="@id/price" />
+            app:layout_constraintTop_toBottomOf="@+id/cost"
+            app:layout_constraintVertical_bias="0" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/previewGuideline"
