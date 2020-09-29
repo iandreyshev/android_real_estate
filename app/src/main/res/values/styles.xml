@@ -7,4 +7,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="FabButtonThemeOverlay" parent="AppTheme">
+        <item name="colorSecondary">@null</item>
+        <item name="colorOnSecondary">@null</item>
+    </style>
+
+    <style name="FabButton" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="rippleColor">@color/gray_2</item>
+    </style>
+
 </resources>

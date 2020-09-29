@@ -7,6 +7,11 @@ object ApartmentStorage {
         Apartment(
             id = ApartmentId("0"),
             name = "Beautiful apartment in the city center",
+            details = "Красивая новая однокомнатная квартира в центре города.\n" +
+                    "Для наших гостей большая двуспальная кровать и два раскладных кресла икеа.\n" +
+                    "Бесплатная парковка и интернет, чай, кофе, сахар, соль, кофемашина.\n" +
+                    "Есть кондиционер и необходимые бытовые приборы, индивидуальные полотенца, фен, одноразовые шампуни и гели, ватные диски и палочки.\n" +
+                    "Поквартирное отопление.",
             owner = Owner(
                 name = "Jack London",
                 isSuper = false,
@@ -45,7 +50,9 @@ object ApartmentStorage {
             ),
             cost = 2_200,
             photo = "https://a0.muscache.com/im/pictures/37c7e6bb-d31b-4190-bcdb-f9fb001ed494.jpg?im_w=1200",
-            isLiked = false
+            isLiked = false,
+            details = "Однокомнатная квартира с современным дизайнерским ремонтом в стиле Loft. В 6-7 минутах ходьбы от центра города и набережной Брюгге. Всегда свежее постельное бельё, кoмплeкт пoлoтeнец, халаты, тапочки. Интepактивнoе ТV, xoлодильник, стиральная мaшинкa, утюг, гладильная доска,фен,микроволновка печь, пoсудa. Тёплый пoл, Wi-Fi, домофон.\n" +
+                    "Заезд после 14-00, выезд до 12-00. Для вашего удобства предусмотрена бесконтактная передача ключей, что значительно экономит время и конфиденциальность пребывания."
         ),
         // https://www.airbnb.com/rooms/41878071?check_in=2020-10-02&check_out=2020-10-03&source_impression_id=p3_1601378632_rRGzdne7d3iMmkM3
         Apartment(
@@ -67,7 +74,8 @@ object ApartmentStorage {
             ),
             cost = 800,
             photo = "https://a0.muscache.com/im/pictures/98c42a9a-6f2a-401b-b9e2-6d59f3ca4d63.jpg?im_w=1200",
-            isLiked = false
+            isLiked = false,
+            details = "Центр, все поблизости"
         ),
         // https://www.airbnb.com/rooms/42987709?check_in=2020-10-02&check_out=2020-10-03&source_impression_id=p3_1601378636_my%2FuOLN%2BF9E24nU9
         Apartment(
@@ -89,7 +97,9 @@ object ApartmentStorage {
             ),
             cost = 2_499,
             photo = "https://a0.muscache.com/im/pictures/8dae35ed-4599-4ffe-a052-346c3e50bd07.jpg?im_w=1440",
-            isLiked = false
+            isLiked = false,
+            details = "Апартаменты \"Bounty\" расположены в центре Йошкар-Олы, на одной из самых оживленных улиц, (ул. Первомайская). В числе удобств круглосуточное заселение, бесплатная парковка. В апартаментах сервируется английский завтрак, с вкуснейшим кофе на выбор.\n" +
+                    "Светлые апартаменты оформлены в современном стиле, в теплых тонах. В распоряжении гостей телевизор, собственная ванная комната, стиральная машина, утюг, фен, гладильная доска, сушилка. Собственная кухня со встроенной техникой, лоджия. Бесплатный Wi-Fi."
         ),
         // https://www.airbnb.com/rooms/44084494?check_in=2020-10-02&check_out=2020-10-03&source_impression_id=p3_1601378640_A2gp%2BCj3cXNfDMZi
         Apartment(
@@ -111,7 +121,8 @@ object ApartmentStorage {
             ),
             cost = 1_999,
             photo = "https://a0.muscache.com/im/pictures/c358d7d5-cd41-4cbf-8abb-046186787af6.jpg?im_w=1440",
-            isLiked = true
+            isLiked = true,
+            details = "Уютная 1-к квартира в районе Вокзала/центра. Рядом Водный Дворец, Ледовый Дворец, множество остановок, торговых центров, магазинов."
         )
     )
 

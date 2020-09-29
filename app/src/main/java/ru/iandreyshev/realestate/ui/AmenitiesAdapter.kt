@@ -13,10 +13,6 @@ import ru.iandreyshev.realestate.domain.Amenity
 
 class AmenitiesAdapter : ListAdapter<Amenity, AmenityViewHolder>(AmenityDiffCallback) {
 
-    var screenWidth: Int = 0
-    var margin: Int = 0
-    var gutter: Int = 0
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         LayoutInflater.from(parent.context)
             .inflate(R.layout.item_amenity, parent, false)
@@ -26,19 +22,9 @@ class AmenitiesAdapter : ListAdapter<Amenity, AmenityViewHolder>(AmenityDiffCall
         val amenity = getItem(position)
 
         holder.itemView.apply {
-            updateLayoutParams {
-                val guttersCount = (VISIBLE_ITEMS_COUNT - 1).coerceAtLeast(0)
-                val sumWidth = screenWidth - 2 * margin - guttersCount * gutter
-                val itemWidth = sumWidth / VISIBLE_ITEMS_COUNT
-                width = itemWidth
-                height = itemWidth
-            }
+            icon.setImageResource(amenity.getIcon())
             name.text = amenity.getName()
         }
-    }
-
-    companion object {
-        private const val VISIBLE_ITEMS_COUNT = 4
     }
 
 }
@@ -50,11 +36,20 @@ private object AmenityDiffCallback : DiffUtil.ItemCallback<Amenity>() {
     override fun areContentsTheSame(oldItem: Amenity, newItem: Amenity) = oldItem == newItem
 }
 
+private fun Amenity.getIcon() = when (this) {
+    Amenity.WIFI -> R.drawable.ic_amenity_wifi
+    Amenity.GYM -> R.drawable.ic_amenity_gym
+    Amenity.FOOD -> R.drawable.ic_amenity_food
+    Amenity.HEATER -> R.drawable.ic_amenity_heater
+    else -> R.drawable.ic_amenity_food
+}
+
+
 private fun Amenity.getName() = when (this) {
-    Amenity.ELEVATOR -> "Elevator"
     Amenity.WIFI -> "WI-FI"
-    Amenity.ESSENTIALS -> "Essentials"
-    Amenity.WASHER -> "Washer"
+    Amenity.GYM -> "Gym"
+    Amenity.FOOD -> "Food"
+    Amenity.HEATER -> "Heater"
     Amenity.HAIR_DRYER -> "Hair dryer"
     Amenity.HEATING -> "Heating"
     Amenity.FREE_PARKING -> "Free parking"

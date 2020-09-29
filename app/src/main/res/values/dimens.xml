@@ -10,4 +10,8 @@
     <dimen name="grid_step_7">28dp</dimen>
     <dimen name="grid_step_8">32dp</dimen>
 
+    <dimen name="amenity_margin">@dimen/grid_step_2</dimen>
+    <dimen name="amenity_top">@dimen/grid_step_4</dimen>
+    <dimen name="amenity_bottom">@dimen/grid_step_6</dimen>
+
 </resources>

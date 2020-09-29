@@ -9,17 +9,22 @@ import androidx.core.content.ContextCompat
 import androidx.core.text.buildSpannedString
 import androidx.core.text.color
 import androidx.core.text.underline
-import androidx.core.view.isVisible
+import androidx.core.view.isInvisible
 import androidx.lifecycle.observe
 import com.bumptech.glide.Glide
 import dev.chrisbanes.insetter.applySystemWindowInsetsToPadding
 import kotlinx.android.synthetic.main.activity_apartment.*
+import kotlinx.android.synthetic.main.activity_apartment.contentView
+import kotlinx.android.synthetic.main.activity_apartment.name
+import kotlinx.android.synthetic.main.activity_apartment.photo
+import kotlinx.android.synthetic.main.activity_apartment.rating
+import kotlinx.android.synthetic.main.activity_apartment.superOwnerStatus
+import kotlinx.android.synthetic.main.amenity_list.*
 import ru.iandreyshev.realestate.R
 import ru.iandreyshev.realestate.domain.Amenity
 import ru.iandreyshev.realestate.domain.Apartment
 import ru.iandreyshev.realestate.domain.ApartmentId
 import ru.iandreyshev.realestate.extension.ApartmentViewModelFactory
-import ru.iandreyshev.realestate.extension.getWidth
 import ru.iandreyshev.realestate.extension.initTranslucentBars
 import ru.iandreyshev.realestate.extension.uiLazy
 import ru.iandreyshev.realestate.presentation.ApartmentViewModel
@@ -41,6 +46,8 @@ class ApartmentActivity : AppCompatActivity(R.layout.activity_apartment) {
         initContentView()
         initAmenityList()
 
+        likeButton.setOnClickListener { mViewModel.onToggleLike() }
+
         mViewModel.apartment.observe(this) { render(it) }
     }
 
@@ -53,18 +60,13 @@ class ApartmentActivity : AppCompatActivity(R.layout.activity_apartment) {
     }
 
     private fun initAmenityList() {
-        val margin = resources.getDimensionPixelSize(R.dimen.grid_step_3)
-        mAmenityAdapter.screenWidth = getWidth()
-        mAmenityAdapter.margin = margin
-        val gutter = resources.getDimensionPixelSize(R.dimen.grid_step_2)
-        mAmenityAdapter.gutter = gutter
         amenityList.adapter = mAmenityAdapter
         amenityList.addItemDecoration(
             AmenityItemDecoration(
-                top = resources.getDimensionPixelSize(R.dimen.grid_step_4),
-                bottom = resources.getDimensionPixelSize(R.dimen.grid_step_6),
-                margin = margin,
-                gutter = gutter
+                top = resources.getDimensionPixelSize(R.dimen.amenity_top),
+                bottom = resources.getDimensionPixelSize(R.dimen.amenity_bottom),
+                margin = resources.getDimensionPixelSize(R.dimen.amenity_margin),
+                gutter = resources.getDimensionPixelSize(R.dimen.grid_step_2)
             )
         )
     }
@@ -77,7 +79,7 @@ class ApartmentActivity : AppCompatActivity(R.layout.activity_apartment) {
         name.text = apartment.name
 
         owner.text = apartment.owner.name
-        superOwnerStatus.isVisible = apartment.owner.isSuper
+        superOwnerStatus.isInvisible = !apartment.owner.isSuper
         mGlide.load(apartment.owner.photo)
             .centerCrop()
             .circleCrop()
@@ -95,7 +97,19 @@ class ApartmentActivity : AppCompatActivity(R.layout.activity_apartment) {
             underline { append(apartment.address.description) }
         }
 
+        likeButton.setImageDrawable(
+            ContextCompat.getDrawable(
+                this,
+                when (apartment.isLiked) {
+                    true -> R.drawable.ic_apartment_like_active
+                    else -> R.drawable.ic_apartment_like_passive
+                }
+            )
+        )
+
         mAmenityAdapter.submitList(Amenity.values().toList())
+
+        details.text = apartment.details
     }
 
     companion object {

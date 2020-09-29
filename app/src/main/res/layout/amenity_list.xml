@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/shadowRow0"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/amenity_top"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/shadowRow1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <FrameLayout
+            android:id="@+id/item00"
+            android:layout_width="@dimen/amenity_top"
+            android:layout_height="@dimen/amenity_top"
+            android:background="@drawable/background_shadow_corner"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/item01"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <FrameLayout
+            android:id="@+id/item01"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/amenity_top"
+            android:background="@drawable/background_shadow_side_vertical"
+            android:rotation="0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/item02"
+            app:layout_constraintStart_toEndOf="@id/item00"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <FrameLayout
+            android:id="@+id/item02"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:background="@drawable/background_shadow_corner"
+            android:rotation="90"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/item01"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/shadowRow1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/shadowRow2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/shadowRow0">
+
+        <FrameLayout
+            android:id="@+id/item10"
+            android:layout_width="@dimen/amenity_top"
+            android:layout_height="0dp"
+            android:background="@drawable/background_shadow_side_horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/item11"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <FrameLayout
+            android:id="@+id/item11"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/background_shadow_center"
+            android:rotation="0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/item12"
+            app:layout_constraintStart_toEndOf="@id/item10"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <FrameLayout
+            android:id="@+id/item12"
+            android:layout_width="@dimen/amenity_top"
+            android:layout_height="0dp"
+            android:background="@drawable/background_shadow_side_horizontal"
+            android:rotation="180"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/item11"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/shadowRow2"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/amenity_top"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@id/amenityList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/shadowRow1">
+
+        <FrameLayout
+            android:id="@+id/item20"
+            android:layout_width="@dimen/amenity_top"
+            android:layout_height="@dimen/amenity_top"
+            android:background="@drawable/background_shadow_corner"
+            android:rotation="270"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/item21"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <FrameLayout
+            android:id="@+id/item21"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/amenity_top"
+            android:background="@drawable/background_shadow_side_vertical"
+            android:rotation="180"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/item22"
+            app:layout_constraintStart_toEndOf="@id/item20"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <FrameLayout
+            android:id="@+id/item22"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:background="@drawable/background_shadow_corner"
+            android:rotation="180"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/item21"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/amenityList"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:itemCount="7"
+        tools:listitem="@layout/item_amenity"
+        tools:padding="@dimen/amenity_top" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

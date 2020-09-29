@@ -1,10 +1,10 @@
 package ru.iandreyshev.realestate.domain
 
 enum class Amenity {
-    ELEVATOR,
     WIFI,
-    ESSENTIALS,
-    WASHER,
+    GYM,
+    FOOD,
+    HEATER,
     HAIR_DRYER,
     HEATING,
     FREE_PARKING,
