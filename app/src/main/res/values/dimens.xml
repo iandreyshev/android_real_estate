@@ -14,4 +14,7 @@
     <dimen name="amenity_top">@dimen/grid_step_4</dimen>
     <dimen name="amenity_bottom">@dimen/grid_step_6</dimen>
 
+    <dimen name="user_location_marker_stroke_width_1">1dp</dimen>
+    <dimen name="user_location_marker_stroke_width_2">2dp</dimen>
+
 </resources>
