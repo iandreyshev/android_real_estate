@@ -1,4 +1,4 @@
-package ru.iandreyshev.realestate.ui
+package ru.iandreyshev.realestate.ui.map
 
 import ru.iandreyshev.realestate.domain.Address
 import ru.iandreyshev.realestate.domain.ApartmentId

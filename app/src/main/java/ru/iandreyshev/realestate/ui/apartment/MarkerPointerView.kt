@@ -1,4 +1,4 @@
-package ru.iandreyshev.realestate.ui
+package ru.iandreyshev.realestate.ui.apartment
 
 import android.content.Context
 import android.graphics.Canvas

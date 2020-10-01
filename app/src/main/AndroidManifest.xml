@@ -12,7 +12,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".ui.MapActivity"
+            android:name=".ui.map.MapActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,7 +21,7 @@
         </activity>
 
         <activity
-            android:name=".ui.ApartmentActivity"
+            android:name=".ui.apartment.ApartmentActivity"
             android:screenOrientation="portrait" />
 
         <meta-data

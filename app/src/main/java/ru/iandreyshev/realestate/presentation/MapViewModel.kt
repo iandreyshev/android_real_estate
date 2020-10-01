@@ -6,7 +6,7 @@ import ru.iandreyshev.realestate.domain.Address
 import ru.iandreyshev.realestate.domain.ApartmentId
 import ru.iandreyshev.realestate.domain.ApartmentStorage
 import ru.iandreyshev.realestate.extension.Event
-import ru.iandreyshev.realestate.ui.ApartmentMarker
+import ru.iandreyshev.realestate.ui.map.ApartmentMarker
 
 class MapViewModel : ViewModel() {
 

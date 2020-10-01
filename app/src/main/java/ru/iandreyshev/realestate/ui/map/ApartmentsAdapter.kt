@@ -1,4 +1,4 @@
-package ru.iandreyshev.realestate.ui
+package ru.iandreyshev.realestate.ui.map
 
 import android.view.LayoutInflater
 import android.view.View

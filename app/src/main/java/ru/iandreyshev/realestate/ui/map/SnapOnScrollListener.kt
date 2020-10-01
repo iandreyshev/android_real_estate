@@ -1,4 +1,4 @@
-package ru.iandreyshev.realestate.ui
+package ru.iandreyshev.realestate.ui.map
 
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SnapHelper

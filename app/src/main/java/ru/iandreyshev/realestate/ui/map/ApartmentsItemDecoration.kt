@@ -1,4 +1,4 @@
-package ru.iandreyshev.realestate.ui
+package ru.iandreyshev.realestate.ui.map
 
 import android.graphics.Rect
 import android.view.View

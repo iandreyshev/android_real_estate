@@ -17,7 +17,7 @@
         android:textColor="#fff"
         android:textSize="15sp" />
 
-    <ru.iandreyshev.realestate.ui.MarkerPointerView
+    <ru.iandreyshev.realestate.ui.apartment.MarkerPointerView
         android:id="@+id/pointer"
         android:layout_width="10dp"
         android:layout_height="5dp"

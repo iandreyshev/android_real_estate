@@ -1,4 +1,4 @@
-package ru.iandreyshev.realestate.ui
+package ru.iandreyshev.realestate.ui.map
 
 import android.graphics.Color
 import android.os.Bundle
@@ -27,6 +27,8 @@ import ru.iandreyshev.realestate.extension.initTranslucentBars
 import ru.iandreyshev.realestate.extension.rubSymbol
 import ru.iandreyshev.realestate.extension.uiLazy
 import ru.iandreyshev.realestate.presentation.MapViewModel
+import ru.iandreyshev.realestate.ui.apartment.MarkerHolder
+import ru.iandreyshev.realestate.ui.apartment.ApartmentActivity
 
 class MapActivity : AppCompatActivity(R.layout.activity_main) {
 

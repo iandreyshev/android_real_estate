@@ -14,7 +14,9 @@
     <dimen name="amenity_top">@dimen/grid_step_4</dimen>
     <dimen name="amenity_bottom">@dimen/grid_step_6</dimen>
 
-    <dimen name="user_location_marker_stroke_width_1">1dp</dimen>
-    <dimen name="user_location_marker_stroke_width_2">2dp</dimen>
+    <dimen name="user_location_marker_pointer_radius">4dp</dimen>
+    <dimen name="user_location_marker_stroke_width">1.95dp</dimen>
+    <dimen name="user_location_marker_pointer_stroke_width">3.25dp</dimen>
+    <dimen name="user_location_marker_pointer_shadow_offset">2.6dp</dimen>
 
 </resources>

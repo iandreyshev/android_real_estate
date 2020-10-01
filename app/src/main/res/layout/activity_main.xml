@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MapActivity">
+    tools:context=".ui.map.MapActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/zoomButtonsCard"
@@ -85,5 +85,10 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:itemCount="7"
         tools:listitem="@layout/item_apartment" />
+
+    <include
+        layout="@layout/view_user_location_marker"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
