@@ -86,9 +86,4 @@
         tools:itemCount="7"
         tools:listitem="@layout/item_apartment" />
 
-    <include
-        layout="@layout/view_user_location_marker"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

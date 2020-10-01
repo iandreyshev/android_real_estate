@@ -23,6 +23,7 @@ class AmenitiesAdapter : ListAdapter<Amenity, AmenityViewHolder>(AmenityDiffCall
         holder.itemView.apply {
             icon.setImageResource(amenity.getIcon())
             name.text = amenity.getName()
+            clickableArea.setOnClickListener { }
         }
     }
 

@@ -6,10 +6,12 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.text.bold
 import androidx.core.text.buildSpannedString
 import androidx.core.text.color
 import androidx.core.text.underline
 import androidx.core.view.isInvisible
+import androidx.core.view.updatePadding
 import androidx.lifecycle.observe
 import com.bumptech.glide.Glide
 import dev.chrisbanes.insetter.applySystemWindowInsetsToPadding
@@ -20,12 +22,14 @@ import kotlinx.android.synthetic.main.activity_apartment.photo
 import kotlinx.android.synthetic.main.activity_apartment.rating
 import kotlinx.android.synthetic.main.activity_apartment.superOwnerStatus
 import kotlinx.android.synthetic.main.amenity_list.*
+import kotlinx.android.synthetic.main.apartment_cost_tile.*
 import ru.iandreyshev.realestate.R
 import ru.iandreyshev.realestate.domain.Amenity
 import ru.iandreyshev.realestate.domain.Apartment
 import ru.iandreyshev.realestate.domain.ApartmentId
 import ru.iandreyshev.realestate.extension.ApartmentViewModelFactory
 import ru.iandreyshev.realestate.extension.initTranslucentBars
+import ru.iandreyshev.realestate.extension.rubSymbol
 import ru.iandreyshev.realestate.extension.uiLazy
 import ru.iandreyshev.realestate.presentation.ApartmentViewModel
 
@@ -45,6 +49,7 @@ class ApartmentActivity : AppCompatActivity(R.layout.activity_apartment) {
         initToolbar()
         initContentView()
         initAmenityList()
+        initCost()
 
         likeButton.setOnClickListener { mViewModel.onToggleLike() }
 
@@ -56,7 +61,8 @@ class ApartmentActivity : AppCompatActivity(R.layout.activity_apartment) {
     }
 
     private fun initContentView() {
-        contentView.applySystemWindowInsetsToPadding(top = true, bottom = true)
+        contentView.applySystemWindowInsetsToPadding(top = true)//, bottom = true)
+
     }
 
     private fun initAmenityList() {
@@ -69,6 +75,13 @@ class ApartmentActivity : AppCompatActivity(R.layout.activity_apartment) {
                 gutter = resources.getDimensionPixelSize(R.dimen.grid_step_2)
             )
         )
+    }
+
+    private fun initCost() {
+        costLayout.applySystemWindowInsetsToPadding(bottom = true)
+        costLayout.addOnLayoutChangeListener { view, i, i2, i3, i4, i5, i6, i7, i8 ->
+            contentView.updatePadding(bottom = view.height)
+        }
     }
 
     private fun render(apartment: Apartment) {
@@ -95,6 +108,11 @@ class ApartmentActivity : AppCompatActivity(R.layout.activity_apartment) {
         }
         location.text = buildSpannedString {
             underline { append(apartment.address.description) }
+        }
+
+        cost.text = buildSpannedString {
+            bold { append("${rubSymbol()}${apartment.cost}") }
+            append("/per night")
         }
 
         likeButton.setImageDrawable(

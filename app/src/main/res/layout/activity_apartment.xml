@@ -1,287 +1,307 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#fff">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/contentView"
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/photoCard"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginHorizontal="@dimen/grid_step_2"
-            android:layout_marginTop="@dimen/grid_step_2"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="0dp"
-            app:layout_constraintDimensionRatio="4:3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/contentView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/photoCard"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="@dimen/grid_step_2"
+                android:layout_marginTop="@dimen/grid_step_2"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                app:layout_constraintDimensionRatio="4:3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/gray_1" />
+
+            </androidx.cardview.widget.CardView>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/likeButton"
+                style="@style/FabButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/grid_step_2"
+                android:backgroundTint="@android:color/white"
+                android:theme="@style/FabButtonThemeOverlay"
+                app:borderWidth="0dp"
+                app:fabCustomSize="58dp"
+                app:iconTint="@null"
+                app:layout_constraintEnd_toEndOf="@id/photoCard"
+                app:layout_constraintTop_toTopOf="@id/photoCard"
+                app:srcCompat="@drawable/ic_apartment_like_active" />
+
+            <FrameLayout
+                android:id="@+id/backButtonWrapper"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="@dimen/grid_step_2"
+                android:background="@drawable/background_apartment_back"
+                app:layout_constraintStart_toStartOf="@id/photoCard"
+                app:layout_constraintTop_toTopOf="@id/photoCard">
+
+                <ImageButton
+                    android:id="@+id/backButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    app:srcCompat="@drawable/ic_apartment_back" />
+
+            </FrameLayout>
 
             <ImageView
-                android:id="@+id/photo"
-                android:layout_width="match_parent"
+                android:id="@+id/ratingIcon"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_marginStart="@dimen/grid_step_4"
+                android:layout_marginTop="@dimen/grid_step_7"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/photoCard"
+                app:srcCompat="@drawable/ic_star" />
+
+            <TextView
+                android:id="@+id/rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/grid_step_1"
+                android:fontFamily="@font/dmsans_medium"
+                android:textColor="@color/gray_2"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="@id/ratingIcon"
+                app:layout_constraintStart_toEndOf="@id/ratingIcon"
+                app:layout_constraintTop_toTopOf="@id/ratingIcon"
+                tools:text="4,82 (134)" />
+
+            <TextView
+                android:id="@+id/ratingBulletSeparator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/grid_step_2"
+                android:fontFamily="@font/dmsans_medium"
+                android:text="@string/bullet_separator"
+                android:textColor="@color/gray_2"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="@id/rating"
+                app:layout_constraintStart_toEndOf="@id/rating"
+                app:layout_constraintTop_toTopOf="@id/rating" />
+
+            <ImageView
+                android:id="@+id/checkedStatusIcon"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_marginStart="@dimen/grid_step_2"
+                app:layout_constraintBottom_toBottomOf="@id/ratingIcon"
+                app:layout_constraintStart_toEndOf="@id/ratingBulletSeparator"
+                app:layout_constraintTop_toTopOf="@id/ratingIcon"
+                app:srcCompat="@drawable/ic_apartment_is_checked" />
+
+            <TextView
+                android:id="@+id/checkedStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/grid_step_1"
+                android:text="Checked"
+                android:textColor="@color/gray_2"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="@id/ratingIcon"
+                app:layout_constraintStart_toEndOf="@id/checkedStatusIcon"
+                app:layout_constraintTop_toTopOf="@id/ratingIcon" />
+
+            <TextView
+                android:id="@+id/checkedStatusBulletSeparator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/grid_step_2"
+                android:fontFamily="@font/dmsans_medium"
+                android:text="@string/bullet_separator"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="@id/rating"
+                app:layout_constraintStart_toEndOf="@+id/checkedStatus"
+                app:layout_constraintTop_toTopOf="@id/rating" />
+
+            <TextView
+                android:id="@+id/location"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/grid_step_2"
+                android:layout_marginEnd="@dimen/grid_step_4"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/gray_2"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="@id/ratingIcon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/checkedStatusBulletSeparator"
+                app:layout_constraintTop_toTopOf="@id/ratingIcon"
+                tools:text="4,82 (134)" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/grid_step_4"
+                android:layout_marginTop="@dimen/grid_step_4"
+                android:fontFamily="@font/arimo"
+                android:lineSpacingExtra="2.6sp"
+                android:textColor="@android:color/black"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ratingIcon"
+                tools:text="Mini Apartment, Take a siesta on the garden" />
+
+            <ImageView
+                android:id="@+id/ownerAvatar"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="@dimen/grid_step_5"
+                app:layout_constraintStart_toStartOf="@id/name"
+                app:layout_constraintTop_toBottomOf="@id/name" />
+
+            <ImageView
+                android:id="@+id/ownerIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="29dp"
+                android:translationX="4dp"
+                app:layout_constraintEnd_toEndOf="@id/ownerAvatar"
+                app:layout_constraintTop_toTopOf="@+id/ownerAvatar"
+                app:srcCompat="@drawable/ic_apartment_owner_icon" />
+
+            <TextView
+                android:id="@+id/owner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/grid_step_2"
+                android:layout_marginEnd="@dimen/grid_step_2"
+                android:fontFamily="@font/arimo"
+                android:text="Federica Pinelli"
+                android:textColor="@color/blue_dark"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/contactMeIcon"
+                app:layout_constraintStart_toEndOf="@id/ownerAvatar"
+                app:layout_constraintTop_toTopOf="@id/ownerAvatar" />
+
+            <TextView
+                android:id="@+id/superOwnerStatus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/grid_step_1"
+                android:layout_marginEnd="@dimen/grid_step_2"
+                android:fontFamily="@font/dmsans_medium"
+                android:text="Super owner"
+                android:textColor="@color/blue_dark_50"
+                android:textSize="13sp"
+                app:layout_constraintEnd_toStartOf="@+id/contactMeIcon"
+                app:layout_constraintStart_toStartOf="@id/owner"
+                app:layout_constraintTop_toBottomOf="@id/owner" />
+
+            <TextView
+                android:id="@+id/contactMeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/grid_step_4"
+                android:fontFamily="@font/dmsans_medium"
+                android:text="Contact me"
+                android:textColor="@color/blue_dark_50"
+                android:textSize="13sp"
+                app:layout_constraintBaseline_toBaselineOf="@id/superOwnerStatus"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <ImageView
+                android:id="@+id/contactMeIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="@dimen/grid_step_2"
+                app:layout_constraintBottom_toBottomOf="@id/contactMeText"
+                app:layout_constraintEnd_toStartOf="@id/contactMeText"
+                app:layout_constraintTop_toTopOf="@id/contactMeText"
+                app:srcCompat="@drawable/ic_apartment_contact_with_owner" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/agentBarrier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="ownerIcon, ownerAvatar, superOwnerStatus, contactMeIcon, contactMeText" />
+
+            <include
+                android:id="@+id/amenityListLayout"
+                layout="@layout/amenity_list"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@color/gray_1" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/agentBarrier" />
 
-        </androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/detailsTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/grid_step_4"
+                android:fontFamily="@font/arimo"
+                android:text="Details"
+                android:textColor="@color/blue_dark"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/amenityListLayout" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/likeButton"
-            style="@style/FabButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/grid_step_2"
-            android:backgroundTint="@android:color/white"
-            android:theme="@style/FabButtonThemeOverlay"
-            app:borderWidth="0dp"
-            app:fabCustomSize="58dp"
-            app:iconTint="@null"
-            app:layout_constraintEnd_toEndOf="@id/photoCard"
-            app:layout_constraintTop_toTopOf="@id/photoCard"
-            app:srcCompat="@drawable/ic_apartment_like_active" />
+            <TextView
+                android:id="@+id/details"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/grid_step_4"
+                android:layout_marginBottom="@dimen/grid_step_2"
+                android:fontFamily="@font/dmsans_regular"
+                android:lineSpacingExtra="8.25sp"
+                android:text="@string/lorem_ipsum_2"
+                android:textColor="@color/blue_dark_70"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/detailsTitle"
+                app:layout_constraintStart_toStartOf="@id/detailsTitle"
+                app:layout_constraintTop_toBottomOf="@id/detailsTitle" />
 
-        <FrameLayout
-            android:id="@+id/backButtonWrapper"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="@dimen/grid_step_2"
-            android:background="@drawable/background_apartment_back"
-            app:layout_constraintStart_toStartOf="@id/photoCard"
-            app:layout_constraintTop_toTopOf="@id/photoCard">
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <ImageButton
-                android:id="@+id/backButton"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                app:srcCompat="@drawable/ic_apartment_back" />
+    </ScrollView>
 
-        </FrameLayout>
+    <include
+        layout="@layout/apartment_cost_tile"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <ImageView
-            android:id="@+id/ratingIcon"
-            android:layout_width="12dp"
-            android:layout_height="12dp"
-            android:layout_marginStart="@dimen/grid_step_4"
-            android:layout_marginTop="@dimen/grid_step_7"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/photoCard"
-            app:srcCompat="@drawable/ic_star" />
-
-        <TextView
-            android:id="@+id/rating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/grid_step_1"
-            android:fontFamily="@font/dmsans_medium"
-            android:textColor="@color/gray_2"
-            android:textSize="13sp"
-            app:layout_constraintBottom_toBottomOf="@id/ratingIcon"
-            app:layout_constraintStart_toEndOf="@id/ratingIcon"
-            app:layout_constraintTop_toTopOf="@id/ratingIcon"
-            tools:text="4,82 (134)" />
-
-        <TextView
-            android:id="@+id/ratingBulletSeparator"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/grid_step_2"
-            android:fontFamily="@font/dmsans_medium"
-            android:text="@string/bullet_separator"
-            android:textColor="@color/gray_2"
-            android:textSize="13sp"
-            app:layout_constraintBottom_toBottomOf="@id/rating"
-            app:layout_constraintStart_toEndOf="@id/rating"
-            app:layout_constraintTop_toTopOf="@id/rating" />
-
-        <ImageView
-            android:id="@+id/checkedStatusIcon"
-            android:layout_width="12dp"
-            android:layout_height="12dp"
-            android:layout_marginStart="@dimen/grid_step_2"
-            app:layout_constraintBottom_toBottomOf="@id/ratingIcon"
-            app:layout_constraintStart_toEndOf="@id/ratingBulletSeparator"
-            app:layout_constraintTop_toTopOf="@id/ratingIcon"
-            app:srcCompat="@drawable/ic_apartment_is_checked" />
-
-        <TextView
-            android:id="@+id/checkedStatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/grid_step_1"
-            android:text="Checked"
-            android:textColor="@color/gray_2"
-            android:textSize="13sp"
-            app:layout_constraintBottom_toBottomOf="@id/ratingIcon"
-            app:layout_constraintStart_toEndOf="@id/checkedStatusIcon"
-            app:layout_constraintTop_toTopOf="@id/ratingIcon" />
-
-        <TextView
-            android:id="@+id/checkedStatusBulletSeparator"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/grid_step_2"
-            android:fontFamily="@font/dmsans_medium"
-            android:text="@string/bullet_separator"
-            android:textSize="13sp"
-            app:layout_constraintBottom_toBottomOf="@id/rating"
-            app:layout_constraintStart_toEndOf="@+id/checkedStatus"
-            app:layout_constraintTop_toTopOf="@id/rating" />
-
-        <TextView
-            android:id="@+id/location"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/grid_step_2"
-            android:layout_marginEnd="@dimen/grid_step_4"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:textColor="@color/gray_2"
-            android:textSize="13sp"
-            app:layout_constraintBottom_toBottomOf="@id/ratingIcon"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/checkedStatusBulletSeparator"
-            app:layout_constraintTop_toTopOf="@id/ratingIcon"
-            tools:text="4,82 (134)" />
-
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/grid_step_4"
-            android:layout_marginTop="@dimen/grid_step_4"
-            android:fontFamily="@font/arimo"
-            android:lineSpacingExtra="2.6sp"
-            android:textColor="@android:color/black"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ratingIcon"
-            tools:text="Mini Apartment, Take a siesta on the garden" />
-
-        <ImageView
-            android:id="@+id/ownerAvatar"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="@dimen/grid_step_5"
-            app:layout_constraintStart_toStartOf="@id/name"
-            app:layout_constraintTop_toBottomOf="@id/name" />
-
-        <ImageView
-            android:id="@+id/ownerIcon"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="29dp"
-            android:translationX="4dp"
-            app:layout_constraintEnd_toEndOf="@id/ownerAvatar"
-            app:layout_constraintTop_toTopOf="@+id/ownerAvatar"
-            app:srcCompat="@drawable/ic_apartment_owner_icon" />
-
-        <TextView
-            android:id="@+id/owner"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/grid_step_2"
-            android:layout_marginEnd="@dimen/grid_step_2"
-            android:fontFamily="@font/arimo"
-            android:text="Federica Pinelli"
-            android:textColor="@color/blue_dark"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/contactMeIcon"
-            app:layout_constraintStart_toEndOf="@id/ownerAvatar"
-            app:layout_constraintTop_toTopOf="@id/ownerAvatar" />
-
-        <TextView
-            android:id="@+id/superOwnerStatus"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/grid_step_1"
-            android:layout_marginEnd="@dimen/grid_step_2"
-            android:fontFamily="@font/dmsans_medium"
-            android:text="Super owner"
-            android:textColor="@color/blue_dark_50"
-            android:textSize="13sp"
-            app:layout_constraintEnd_toStartOf="@+id/contactMeIcon"
-            app:layout_constraintStart_toStartOf="@id/owner"
-            app:layout_constraintTop_toBottomOf="@id/owner" />
-
-        <TextView
-            android:id="@+id/contactMeText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/grid_step_4"
-            android:fontFamily="@font/dmsans_medium"
-            android:text="Contact me"
-            android:textColor="@color/blue_dark_50"
-            android:textSize="13sp"
-            app:layout_constraintBaseline_toBaselineOf="@id/superOwnerStatus"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <ImageView
-            android:id="@+id/contactMeIcon"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginEnd="@dimen/grid_step_2"
-            app:layout_constraintBottom_toBottomOf="@id/contactMeText"
-            app:layout_constraintEnd_toStartOf="@id/contactMeText"
-            app:layout_constraintTop_toTopOf="@id/contactMeText"
-            app:srcCompat="@drawable/ic_apartment_contact_with_owner" />
-
-        <androidx.constraintlayout.widget.Barrier
-            android:id="@+id/agentBarrier"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:barrierDirection="bottom"
-            app:constraint_referenced_ids="ownerIcon, ownerAvatar, superOwnerStatus, contactMeIcon, contactMeText" />
-
-        <include
-            android:id="@+id/amenityListLayout"
-            layout="@layout/amenity_list"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/agentBarrier" />
-
-        <TextView
-            android:id="@+id/detailsTitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/grid_step_4"
-            android:fontFamily="@font/arimo"
-            android:text="Details"
-            android:textColor="@color/blue_dark"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/amenityListLayout" />
-
-        <TextView
-            android:id="@+id/details"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/grid_step_4"
-            android:layout_marginBottom="@dimen/grid_step_2"
-            android:fontFamily="@font/dmsans_regular"
-            android:lineSpacingExtra="8.25sp"
-            android:text="@string/lorem_ipsum_2"
-            android:textColor="@color/blue_dark_70"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/detailsTitle"
-            app:layout_constraintStart_toStartOf="@id/detailsTitle"
-            app:layout_constraintTop_toBottomOf="@id/detailsTitle" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

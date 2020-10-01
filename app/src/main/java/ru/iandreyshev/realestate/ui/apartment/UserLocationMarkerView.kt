@@ -5,6 +5,7 @@ import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 import ru.iandreyshev.realestate.R
+import ru.iandreyshev.realestate.extension.pixelsF
 import ru.iandreyshev.realestate.extension.uiLazy
 import kotlin.math.min
 
@@ -25,15 +26,10 @@ class UserLocationMarkerView @JvmOverloads constructor(
     private var mCenterY = (height / 2).toFloat()
     private var mRadius = min(width, height).toFloat()
 
-    private val mStrokeWidth =
-        resources.getDimensionPixelSize(R.dimen.user_location_marker_stroke_width).toFloat()
-    private val mPointerStrokeWidth =
-        resources.getDimensionPixelSize(R.dimen.user_location_marker_pointer_stroke_width).toFloat()
-    private val mPointerRadius =
-        resources.getDimensionPixelSize(R.dimen.user_location_marker_pointer_radius).toFloat()
-    private val mPointerShadowOffset =
-        resources.getDimensionPixelSize(R.dimen.user_location_marker_pointer_shadow_offset)
-            .toFloat()
+    private val mStrokeWidth by pixelsF(R.dimen.user_location_marker_stroke_width)
+    private val mPointerStrokeWidth by pixelsF(R.dimen.user_location_marker_pointer_stroke_width)
+    private val mPointerRadius by pixelsF(R.dimen.user_location_marker_pointer_radius)
+    private val mPointerShadowOffset by pixelsF(R.dimen.user_location_marker_pointer_shadow_offset)
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)

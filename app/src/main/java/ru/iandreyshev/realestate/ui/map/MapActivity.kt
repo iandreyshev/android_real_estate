@@ -12,20 +12,16 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
-import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.maps.android.ui.IconGenerator
 import dev.chrisbanes.insetter.applySystemWindowInsetsToMargin
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.view_marker.view.*
+import kotlinx.android.synthetic.main.view_apartment_marker.view.*
 import ru.iandreyshev.realestate.R
 import ru.iandreyshev.realestate.domain.ApartmentId
 import ru.iandreyshev.realestate.domain.Position
-import ru.iandreyshev.realestate.extension.getWidth
-import ru.iandreyshev.realestate.extension.initTranslucentBars
-import ru.iandreyshev.realestate.extension.rubSymbol
-import ru.iandreyshev.realestate.extension.uiLazy
+import ru.iandreyshev.realestate.extension.*
 import ru.iandreyshev.realestate.presentation.MapViewModel
 import ru.iandreyshev.realestate.ui.apartment.MarkerHolder
 import ru.iandreyshev.realestate.ui.apartment.ApartmentActivity
@@ -34,7 +30,8 @@ class MapActivity : AppCompatActivity(R.layout.activity_main) {
 
     private val mViewModel: MapViewModel by viewModels()
     private lateinit var mMap: GoogleMap
-    private val mMarkers = mutableMapOf<ApartmentId, MarkerHolder>()
+    private val mApartmentMarkers = mutableMapOf<ApartmentId, MarkerHolder>()
+    private var mUserMarker: Marker? = null
     private val mMarkerGenerator by uiLazy {
         IconGenerator(this)
             .apply { setBackground(null) }
@@ -48,14 +45,10 @@ class MapActivity : AppCompatActivity(R.layout.activity_main) {
         initZoomButtons()
         initApartmentList()
 
-        mViewModel.showTargetEvent.observe(this) { event ->
-            event.consume { address -> moveMapToTarget(address) }
-        }
-        mViewModel.openApartment.observe(this) { event ->
-            event.consume { apartmentId ->
-                val intent = ApartmentActivity.newIntent(this, apartmentId)
-                startActivity(intent)
-            }
+        mViewModel.showTargetEvent.consume(this, ::moveMapToTarget)
+        mViewModel.openApartment.consume(this) { apartmentId ->
+            val intent = ApartmentActivity.newIntent(this, apartmentId)
+            startActivity(intent)
         }
     }
 
@@ -64,7 +57,8 @@ class MapActivity : AppCompatActivity(R.layout.activity_main) {
         mapFragment.getMapAsync { map ->
             mMap = map
             mViewModel.onMapReady()
-            mViewModel.apartmentMarkers.observe(this, ::renderMarkers)
+            mViewModel.apartmentMarkers.observe(this, ::renderApartmentMarkers)
+            mViewModel.userMarker.observe(this, ::renderUserMarker)
         }
     }
 
@@ -102,18 +96,17 @@ class MapActivity : AppCompatActivity(R.layout.activity_main) {
     }
 
     private fun moveMapToTarget(position: Position) {
-        val mapPosition = LatLng(position.lat, position.lng)
-        val animation = CameraUpdateFactory.newLatLngZoom(mapPosition, APARTMENT_ZOOM)
+        val animation = CameraUpdateFactory.newLatLngZoom(position.latLng(), APARTMENT_ZOOM)
         mMap.animateCamera(animation)
     }
 
-    private fun renderMarkers(markers: List<ApartmentMarker>) {
+    private fun renderApartmentMarkers(markers: List<ApartmentMarker>) {
         markers.forEach { newMarker ->
-            val markerHolder = mMarkers[newMarker.id]
+            val markerHolder = mApartmentMarkers[newMarker.id]
             val oldMarker = markerHolder?.appMarker ?: kotlin.run {
                 val newMapMarker = addMarker(newMarker)
 
-                mMarkers[newMarker.id] = MarkerHolder(
+                mApartmentMarkers[newMarker.id] = MarkerHolder(
                     appMarker = newMarker,
                     mapMarker = newMapMarker
                 )
@@ -123,7 +116,7 @@ class MapActivity : AppCompatActivity(R.layout.activity_main) {
 
             if (oldMarker != newMarker) {
                 markerHolder.mapMarker.remove()
-                mMarkers[oldMarker.id] = markerHolder.copy(
+                mApartmentMarkers[oldMarker.id] = markerHolder.copy(
                     appMarker = newMarker,
                     mapMarker = addMarker(newMarker)
                 )
@@ -133,7 +126,7 @@ class MapActivity : AppCompatActivity(R.layout.activity_main) {
 
     private fun addMarker(appMarker: ApartmentMarker): Marker {
         val view = LayoutInflater.from(this)
-            .inflate(R.layout.view_marker, null, false)
+            .inflate(R.layout.view_apartment_marker, null, false)
 
         view.cost.setBackgroundResource(
             when (appMarker.isActive) {
@@ -154,13 +147,27 @@ class MapActivity : AppCompatActivity(R.layout.activity_main) {
 
         val bitmap = mMarkerGenerator.makeIcon()
         val marker = MarkerOptions()
-            .position(LatLng(appMarker.position.lat, appMarker.position.lng))
+            .position(appMarker.position.latLng())
             .icon(BitmapDescriptorFactory.fromBitmap(bitmap))
 
         return mMap.addMarker(marker)
     }
 
     private fun renderUserMarker(position: Position) {
+        mUserMarker ?: kotlin.run {
+            val view = LayoutInflater.from(this)
+                .inflate(R.layout.view_user_location_marker, null, false)
+
+            mMarkerGenerator.setContentView(view)
+
+            val bitmap = mMarkerGenerator.makeIcon()
+            val markerOptions = MarkerOptions()
+                .position(position.latLng())
+                .icon(BitmapDescriptorFactory.fromBitmap(bitmap))
+
+            mUserMarker = mMap.addMarker(markerOptions)
+        }
+        mUserMarker?.position = position.latLng()
     }
 
     companion object {

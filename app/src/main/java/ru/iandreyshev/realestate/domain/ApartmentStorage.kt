@@ -23,8 +23,8 @@ object ApartmentStorage {
             ),
             address = Address(
                 position = Position(
-                    lat = 56.642666,
-                    lng = 47.898776,
+                    lat = 56.640206,
+                    lng = 47.905304,
                 ),
                 description = "Yoshkar-Ola, Mari El Republic, Russia",
             ),
@@ -81,7 +81,7 @@ object ApartmentStorage {
             cost = 800,
             photo = "https://a0.muscache.com/im/pictures/98c42a9a-6f2a-401b-b9e2-6d59f3ca4d63.jpg?im_w=1200",
             isLiked = false,
-            details = "Центр, все поблизости"
+            details = "В квартире есть всё необходимое для комфортного проживания: большая двуспальная кровать, раскладной диван, огромный балкон, быт. техника, плита, духовка и вся посуда, необходимая для приготовления и принятия пищи, утюг, стиральная машинка, сушилка для белья, СВЧ-печь, эл. чайник, кабельное ТВ, чистое постельное бельё и полотенца, средства гигиены."
         ),
         // https://www.airbnb.com/rooms/42987709?check_in=2020-10-02&check_out=2020-10-03&source_impression_id=p3_1601378636_my%2FuOLN%2BF9E24nU9
         Apartment(

@@ -3,6 +3,7 @@
     package="ru.iandreyshev.realestate">
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:fullBackupContent="false"
         android:icon="@mipmap/ic_launcher"
