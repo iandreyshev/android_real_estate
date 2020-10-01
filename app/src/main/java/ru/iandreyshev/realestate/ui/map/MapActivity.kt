@@ -20,8 +20,8 @@ import dev.chrisbanes.insetter.applySystemWindowInsetsToMargin
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.view_marker.view.*
 import ru.iandreyshev.realestate.R
-import ru.iandreyshev.realestate.domain.Address
 import ru.iandreyshev.realestate.domain.ApartmentId
+import ru.iandreyshev.realestate.domain.Position
 import ru.iandreyshev.realestate.extension.getWidth
 import ru.iandreyshev.realestate.extension.initTranslucentBars
 import ru.iandreyshev.realestate.extension.rubSymbol
@@ -101,9 +101,9 @@ class MapActivity : AppCompatActivity(R.layout.activity_main) {
         apartments.addOnScrollListener(snapScrollListener)
     }
 
-    private fun moveMapToTarget(address: Address) {
-        val position = LatLng(address.lat, address.lng)
-        val animation = CameraUpdateFactory.newLatLngZoom(position, APARTMENT_ZOOM)
+    private fun moveMapToTarget(position: Position) {
+        val mapPosition = LatLng(position.lat, position.lng)
+        val animation = CameraUpdateFactory.newLatLngZoom(mapPosition, APARTMENT_ZOOM)
         mMap.animateCamera(animation)
     }
 
@@ -154,10 +154,13 @@ class MapActivity : AppCompatActivity(R.layout.activity_main) {
 
         val bitmap = mMarkerGenerator.makeIcon()
         val marker = MarkerOptions()
-            .position(LatLng(appMarker.address.lat, appMarker.address.lng))
+            .position(LatLng(appMarker.position.lat, appMarker.position.lng))
             .icon(BitmapDescriptorFactory.fromBitmap(bitmap))
 
         return mMap.addMarker(marker)
+    }
+
+    private fun renderUserMarker(position: Position) {
     }
 
     companion object {

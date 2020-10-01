@@ -22,8 +22,10 @@ object ApartmentStorage {
                 ratesCount = 33
             ),
             address = Address(
-                lat = 56.642666,
-                lng = 47.898776,
+                position = Position(
+                    lat = 56.642666,
+                    lng = 47.898776,
+                ),
                 description = "Yoshkar-Ola, Mari El Republic, Russia",
             ),
             cost = 2_369,
@@ -44,8 +46,10 @@ object ApartmentStorage {
                 ratesCount = 214
             ),
             address = Address(
-                lat = 56.638124,
-                lng = 47.898347,
+                position = Position(
+                    lat = 56.638124,
+                    lng = 47.898347,
+                ),
                 description = "Yoshkar-Ola, Respublika Mariy El, Russia"
             ),
             cost = 2_200,
@@ -68,8 +72,10 @@ object ApartmentStorage {
                 ratesCount = 624
             ),
             address = Address(
-                lat = 56.632890,
-                lng = 47.904446,
+                position = Position(
+                    lat = 56.632890,
+                    lng = 47.904446,
+                ),
                 description = "Yoshkar-Ola, Respublika Mariy El, Russia"
             ),
             cost = 800,
@@ -91,8 +97,10 @@ object ApartmentStorage {
                 ratesCount = 905
             ),
             address = Address(
-                lat = 56.633315,
-                lng = 47.899554,
+                position = Position(
+                    lat = 56.633315,
+                    lng = 47.899554,
+                ),
                 description = "Yoshkar-Ola, Respublika Mariy El, Russia"
             ),
             cost = 2_499,
@@ -115,8 +123,10 @@ object ApartmentStorage {
                 ratesCount = 1539
             ),
             address = Address(
-                lat = 56.633905,
-                lng = 47.911398,
+                position = Position(
+                    lat = 56.633905,
+                    lng = 47.911398,
+                ),
                 description = "Yoshkar-Ola, Respublika Mariy El, Russia"
             ),
             cost = 1_999,

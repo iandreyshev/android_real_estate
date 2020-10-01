@@ -1,7 +1,6 @@
 package ru.iandreyshev.realestate.domain
 
 data class Address(
-    val lat: Double,
-    val lng: Double,
+    val position: Position,
     val description: String
 )

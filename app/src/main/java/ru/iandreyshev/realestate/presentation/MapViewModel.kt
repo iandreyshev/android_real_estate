@@ -2,9 +2,10 @@ package ru.iandreyshev.realestate.presentation
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import ru.iandreyshev.realestate.domain.Address
-import ru.iandreyshev.realestate.domain.ApartmentId
-import ru.iandreyshev.realestate.domain.ApartmentStorage
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
+import ru.iandreyshev.realestate.domain.*
 import ru.iandreyshev.realestate.extension.Event
 import ru.iandreyshev.realestate.ui.map.ApartmentMarker
 
@@ -13,8 +14,9 @@ class MapViewModel : ViewModel() {
     val apartments = ApartmentStorage.apartments
 
     val apartmentMarkers = MutableLiveData<List<ApartmentMarker>>()
+    val userMarker = MutableLiveData<Position>()
 
-    val showTargetEvent = MutableLiveData<Event<Address>>()
+    val showTargetEvent = MutableLiveData<Event<Position>>()
     val openApartment = MutableLiveData<Event<ApartmentId>>()
 
     private var mTargetPosition: Int = 0
@@ -27,9 +29,12 @@ class MapViewModel : ViewModel() {
                     id = it.id,
                     isActive = false,
                     cost = it.cost,
-                    address = it.address
+                    position = it.address.position
                 )
             }
+            UserPositionProvider.getUserPosition()
+                .onEach { userMarker.value = it }
+                .launchIn(viewModelScope)
             mIsMarkersInitialized = true
         }
 
@@ -40,7 +45,7 @@ class MapViewModel : ViewModel() {
         mTargetPosition = position
 
         val apartment = apartments.getOrNull(position) ?: return
-        showTargetEvent.value = Event(apartment.address)
+        showTargetEvent.value = Event(apartment.address.position)
 
         apartmentMarkers.value = apartmentMarkers.value?.map {
             it.copy(isActive = apartment.id == it.id)

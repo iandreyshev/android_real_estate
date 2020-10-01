@@ -44,7 +44,7 @@ class UserLocationMarkerView @JvmOverloads constructor(
 
         mPointerShadow = RadialGradient(
             mCenterX,
-            mCenterY + 50,
+            mCenterY + mPointerShadowOffset,
             mPointerRadius + mPointerStrokeWidth,
             Color.BLACK,
             Color.TRANSPARENT,
@@ -55,31 +55,31 @@ class UserLocationMarkerView @JvmOverloads constructor(
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
 
-//        mPaint.color = Color.WHITE
-//        mPaint.alpha = 102
-//        mPaint.style = Paint.Style.FILL
-//        canvas?.drawCircle(mCenterX, mCenterY, mRadius, mPaint)
-//
-//        mPaint.color = Color.WHITE
-//        mPaint.style = Paint.Style.STROKE
-//        mPaint.strokeWidth = mStrokeWidth
-//        canvas?.drawCircle(mCenterX, mCenterY, mRadius - mStrokeWidth / 2, mPaint)
+        mPaint.color = Color.WHITE
+        mPaint.alpha = 102
+        mPaint.style = Paint.Style.FILL
+        canvas?.drawCircle(mCenterX, mCenterY, mRadius, mPaint)
+
+        mPaint.color = Color.WHITE
+        mPaint.style = Paint.Style.STROKE
+        mPaint.strokeWidth = mStrokeWidth
+        canvas?.drawCircle(mCenterX, mCenterY, mRadius - mStrokeWidth / 2, mPaint)
 
         canvas?.drawCircle(
             mCenterX,
-            mCenterY,
-            mPointerRadius,
+            mCenterY + mPointerShadowOffset,
+            mPointerRadius + mPointerStrokeWidth,
             mPointerShadowPaint
         )
 
-//        mPaint.color = Color.BLACK
-//        mPaint.style = Paint.Style.FILL
-//        canvas?.drawCircle(mCenterX, mCenterY, mPointerRadius, mPaint)
-//
-//        mPaint.color = Color.WHITE
-//        mPaint.style = Paint.Style.STROKE
-//        mPaint.strokeWidth = mPointerStrokeWidth
-//        canvas?.drawCircle(mCenterX, mCenterY, mPointerRadius + mPointerStrokeWidth / 2, mPaint)
+        mPaint.color = Color.BLACK
+        mPaint.style = Paint.Style.FILL
+        canvas?.drawCircle(mCenterX, mCenterY, mPointerRadius, mPaint)
+
+        mPaint.color = Color.WHITE
+        mPaint.style = Paint.Style.STROKE
+        mPaint.strokeWidth = mPointerStrokeWidth
+        canvas?.drawCircle(mCenterX, mCenterY, mPointerRadius + mPointerStrokeWidth / 2, mPaint)
     }
 
 }
