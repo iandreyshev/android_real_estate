@@ -1,7 +1,9 @@
 package ru.iandreyshev.realestate.ui.map
 
+import android.app.ActivityOptions
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Pair
 import android.view.LayoutInflater
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -11,20 +13,20 @@ import com.bumptech.glide.Glide
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.BitmapDescriptorFactory
-import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
 import com.google.maps.android.ui.IconGenerator
 import dev.chrisbanes.insetter.applySystemWindowInsetsToMargin
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.item_apartment.view.*
 import kotlinx.android.synthetic.main.view_apartment_marker.view.*
+import kotlinx.android.synthetic.main.view_apartment_marker.view.cost
 import ru.iandreyshev.realestate.R
 import ru.iandreyshev.realestate.domain.ApartmentId
 import ru.iandreyshev.realestate.domain.Position
 import ru.iandreyshev.realestate.extension.*
 import ru.iandreyshev.realestate.presentation.MapViewModel
-import ru.iandreyshev.realestate.ui.apartment.MarkerHolder
 import ru.iandreyshev.realestate.ui.apartment.ApartmentActivity
+import ru.iandreyshev.realestate.ui.apartment.MarkerHolder
 
 class MapActivity : AppCompatActivity(R.layout.activity_main) {
 
@@ -36,6 +38,15 @@ class MapActivity : AppCompatActivity(R.layout.activity_main) {
         IconGenerator(this)
             .apply { setBackground(null) }
     }
+    private val mApartmentsAdapter by uiLazy {
+        ApartmentsAdapter(
+            glide = Glide.with(this),
+            onClickListener = { position ->
+                apartments.smoothScrollToPosition(position)
+                mViewModel.onOpenApartmentAt(position)
+            }
+        )
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         initTranslucentBars()
@@ -46,9 +57,27 @@ class MapActivity : AppCompatActivity(R.layout.activity_main) {
         initApartmentList()
 
         mViewModel.showTargetEvent.consume(this, ::moveMapToTarget)
-        mViewModel.openApartment.consume(this) { apartmentId ->
+        mViewModel.openApartmentEvent.consume(this) { apartmentId ->
+            val apartmentView = mApartmentsAdapter.viewHolders
+                .firstOrNull { it.id == apartmentId }
+                ?.itemView
+
             val intent = ApartmentActivity.newIntent(this, apartmentId)
-            startActivity(intent)
+
+            when (apartmentView) {
+                null -> {
+                    startActivity(intent)
+                }
+                else -> {
+                    val options = ActivityOptions.makeSceneTransitionAnimation(
+                        this,
+//                        Pair(apartmentView.name, "apartmentName"),
+                        Pair(apartmentView.photoCard, "apartmentPhoto"),
+//                        Pair(apartmentView.backgroundStub, "apartmentBackground")
+                    )
+                    startActivity(intent, options.toBundle())
+                }
+            }
         }
     }
 
@@ -75,13 +104,7 @@ class MapActivity : AppCompatActivity(R.layout.activity_main) {
         val snapScrollListener = SnapOnScrollListener(snapHelper, mViewModel::onSelectApartmentAt)
 
         apartments.applySystemWindowInsetsToMargin(bottom = true)
-        apartments.adapter = ApartmentsAdapter(
-            glide = Glide.with(this),
-            onClickListener = { position ->
-                apartments.smoothScrollToPosition(position)
-                mViewModel.onOpenApartmentAt(position)
-            }
-        ).apply {
+        apartments.adapter = mApartmentsAdapter.apply {
             itemWidth = (getWidth() * 0.85).toInt()
             submitList(mViewModel.apartments)
         }

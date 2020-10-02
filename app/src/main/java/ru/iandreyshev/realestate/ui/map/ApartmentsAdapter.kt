@@ -16,6 +16,7 @@ import com.bumptech.glide.RequestManager
 import kotlinx.android.synthetic.main.item_apartment.view.*
 import ru.iandreyshev.realestate.R
 import ru.iandreyshev.realestate.domain.Apartment
+import ru.iandreyshev.realestate.domain.ApartmentId
 import ru.iandreyshev.realestate.extension.rubSymbol
 
 class ApartmentsAdapter(
@@ -24,6 +25,17 @@ class ApartmentsAdapter(
 ) : ListAdapter<Apartment, ApartmentViewHolder>(DiffCallback) {
 
     var itemWidth = 0
+    val viewHolders = mutableSetOf<ApartmentViewHolder>()
+
+    override fun onViewAttachedToWindow(holder: ApartmentViewHolder) {
+        super.onViewAttachedToWindow(holder)
+        viewHolders.add(holder)
+    }
+
+    override fun onViewDetachedFromWindow(holder: ApartmentViewHolder) {
+        super.onViewDetachedFromWindow(holder)
+        viewHolders.remove(holder)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         LayoutInflater.from(parent.context)
@@ -33,6 +45,7 @@ class ApartmentsAdapter(
     override fun onBindViewHolder(holder: ApartmentViewHolder, position: Int) {
         val apartment = getItem(position)
 
+        holder.id = apartment.id
         holder.itemView.apply {
             updateLayoutParams {
                 width = itemWidth
@@ -67,6 +80,8 @@ class ApartmentViewHolder(
     init {
         view.contentView.setOnClickListener { onClickListener(adapterPosition) }
     }
+
+    var id: ApartmentId? = null
 
 }
 

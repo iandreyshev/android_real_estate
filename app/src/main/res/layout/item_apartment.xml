@@ -17,10 +17,12 @@
         android:paddingVertical="@dimen/grid_step_2">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/photoCard"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginEnd="@dimen/grid_step_4"
             android:elevation="0dp"
+            android:transitionName="apartmentPhoto"
             app:cardBackgroundColor="@color/gray_1"
             app:cardCornerRadius="8dp"
             app:cardElevation="0dp"

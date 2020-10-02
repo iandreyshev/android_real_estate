@@ -17,7 +17,7 @@ class MapViewModel : ViewModel() {
     val userMarker = MutableLiveData<Position>()
 
     val showTargetEvent = MutableLiveData<Event<Position>>()
-    val openApartment = MutableLiveData<Event<ApartmentId>>()
+    val openApartmentEvent = MutableLiveData<Event<ApartmentId>>()
 
     private var mTargetPosition: Int = 0
     private var mIsMarkersInitialized = false
@@ -54,7 +54,7 @@ class MapViewModel : ViewModel() {
 
     fun onOpenApartmentAt(position: Int) {
         val apartment = apartments.getOrNull(position) ?: return
-        openApartment.value = Event(apartment.id)
+        openApartmentEvent.value = Event(apartment.id)
     }
 
 }

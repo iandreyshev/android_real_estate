@@ -26,6 +26,7 @@
                 android:layout_height="0dp"
                 android:layout_marginHorizontal="@dimen/grid_step_2"
                 android:layout_marginTop="@dimen/grid_step_2"
+                android:transitionName="apartmentPhoto"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="0dp"
                 app:layout_constraintDimensionRatio="4:3"
