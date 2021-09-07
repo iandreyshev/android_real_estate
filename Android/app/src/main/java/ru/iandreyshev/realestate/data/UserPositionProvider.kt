@@ -1,8 +1,9 @@
-package ru.iandreyshev.realestate.domain
+package ru.iandreyshev.realestate.data
 
 import android.content.Context
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
+import ru.iandreyshev.realestate.domain.Position
 
 object UserPositionProvider {
 

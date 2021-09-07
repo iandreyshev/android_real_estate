@@ -1,6 +1,8 @@
-package ru.iandreyshev.realestate.domain
+package ru.iandreyshev.realestate.data
 
-object ApartmentStorage {
+import ru.iandreyshev.realestate.domain.*
+
+object ApartmentsProvider {
 
     val apartments = listOf(
         // https://www.airbnb.com/rooms/36461288?check_in=2020-10-02&check_out=2020-10-03&source_impression_id=p3_1601378608_Q2YJeCeWpK9gVUwh
